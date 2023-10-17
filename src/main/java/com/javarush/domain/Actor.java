@@ -8,7 +8,7 @@ import java.util.Set;
 
 @Entity
 @Table(schema = "movie", name = "actor")
-public class Actor {
+public class Actor extends AuditUpdateEntity<Short>{
     @Id
     @Column(name = "actor_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,9 +20,6 @@ public class Actor {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "last_update")
-    @UpdateTimestamp
-    private LocalDateTime lastUpdate;
 
     @ManyToMany
     @JoinTable(name = "film_actor",
@@ -53,14 +50,6 @@ public class Actor {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public LocalDateTime getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(LocalDateTime lastUpdate) {
-        this.lastUpdate = lastUpdate;
     }
 
     public Set<Film> getFilms() {

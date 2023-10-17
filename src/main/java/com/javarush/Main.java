@@ -44,8 +44,8 @@ public class Main {
             film.setReplacementCost(BigDecimal.valueOf(66.66));
             film.setReplacementCost(BigDecimal.valueOf(666.66));
             film.setLanguage(language);
-            film.setDescription("TestFilm6");
-            film.setTitle("TestTitle6");
+            film.setDescription("TestFilm8");
+            film.setTitle("TestTitle8");
             film.setRentalDuration((byte) 10);
             film.setOriginalLanguage(language);
             film.setCategories(new HashSet<>(categories));
@@ -56,8 +56,8 @@ public class Main {
             FilmText filmText = new FilmText();
             filmText.setId(film.getId());
             filmText.setFilm(film);
-            filmText.setDescription("TestFilm6");
-            filmText.setTitle("TestTitle6");
+            filmText.setDescription("TestFilm8");
+            filmText.setTitle("TestTitle8");
             EntityUtility.getFilmTextDAO().save(filmText);
 
 

@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(schema = "movie", name = "payment")
-public class Payment {
+public class Payment extends AuditUpdateEntity<Short> {
     @Id
     @Column(name = "payment_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,10 +32,6 @@ public class Payment {
     @Column(name = "payment_date")
     @CreationTimestamp
     private LocalDateTime paymentDate;
-
-    @Column(name = "last_update")
-    @UpdateTimestamp
-    private LocalDateTime lastUpdate;
 
     public Short getId() {
         return id;
@@ -85,11 +81,5 @@ public class Payment {
         this.paymentDate = paymentDate;
     }
 
-    public LocalDateTime getLastUpdate() {
-        return lastUpdate;
-    }
 
-    public void setLastUpdate(LocalDateTime lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
 }

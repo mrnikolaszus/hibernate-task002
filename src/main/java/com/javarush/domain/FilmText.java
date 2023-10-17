@@ -6,7 +6,7 @@ import org.hibernate.annotations.Type;
 
 @Entity
 @Table(schema = "movie", name = "film_text")
-public class FilmText {
+public class FilmText implements BaseEntity<Short> {
     @Id
     @Column(name = "film_id")
     private Short id;

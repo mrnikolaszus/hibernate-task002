@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(schema = "movie", name = "staff")
-public class Staff {
+public class Staff extends AuditUpdateEntity<Byte> {
     @Id
     @Column(name = "staff_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,10 +40,6 @@ public class Staff {
 
     private String username;
     private String password;
-
-    @Column(name = "last_update")
-    @UpdateTimestamp
-    private LocalDateTime lastUpdate;
 
     public Byte getId() {
         return id;
@@ -125,11 +121,4 @@ public class Staff {
         this.password = password;
     }
 
-    public LocalDateTime getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(LocalDateTime lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
 }

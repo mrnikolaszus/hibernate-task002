@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(schema = "movie", name = "address")
-public class Address {
+public class Address extends AuditUpdateEntity<Short> {
     @Id
     @Column(name = "address_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,9 +28,6 @@ public class Address {
 
     private String phone;
 
-    @Column(name = "last_update")
-    @UpdateTimestamp
-    private LocalDateTime lastUpdate;
 
     public Short getId() {
         return id;
@@ -88,11 +85,4 @@ public class Address {
         this.phone = phone;
     }
 
-    public LocalDateTime getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(LocalDateTime lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
 }

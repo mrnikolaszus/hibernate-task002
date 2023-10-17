@@ -7,17 +7,13 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(schema = "movie", name = "country")
-public class Country {
+public class Country extends AuditUpdateEntity<Short> {
     @Id
     @Column(name = "country_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Short id;
 
     private String country;
-
-    @Column(name = "last_update")
-    @UpdateTimestamp
-    private LocalDateTime lastUpdate;
 
     public Short getId() {
         return id;
@@ -35,11 +31,4 @@ public class Country {
         this.country = country;
     }
 
-    public LocalDateTime getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(LocalDateTime lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
 }

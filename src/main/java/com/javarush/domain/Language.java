@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(schema = "movie", name = "language")
-public class Language {
+public class Language extends AuditUpdateEntity<Byte> {
     @Id
     @Column(name = "language_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,10 +15,6 @@ public class Language {
 
     @Column(columnDefinition = "char")
     private String name;
-
-    @Column(name = "last_update")
-    @UpdateTimestamp
-    private LocalDateTime lastUpdate;
 
     public Byte getId() {
         return id;
@@ -36,11 +32,4 @@ public class Language {
         this.name = name;
     }
 
-    public LocalDateTime getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(LocalDateTime lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
 }

@@ -17,7 +17,7 @@ import static java.util.Objects.isNull;
 
 @Entity
 @Table(schema = "movie", name="film")
-public class Film {
+public class Film extends AuditUpdateEntity<Short> {
     @Id
     @Column(name = "film_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -59,9 +59,6 @@ public class Film {
     @Column(name = "special_features", columnDefinition = "set('Trailers', 'Commentaries', 'Deleted Scenes', 'Behind the Scenes')")
    private String specialFeatures;
 
-    @Column(name = "last_update")
-    @UpdateTimestamp
-    private LocalDateTime lastUpdate;
 
     @ManyToMany
     @JoinTable(name = "film_actor",
@@ -186,14 +183,6 @@ public class Film {
             specialFeatures = features.stream().map(Feature::getValue).collect(Collectors.joining(","));
 
         }
-    }
-
-    public LocalDateTime getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(LocalDateTime lastUpdate) {
-        this.lastUpdate = lastUpdate;
     }
 
     public Set<Actor> getActors() {

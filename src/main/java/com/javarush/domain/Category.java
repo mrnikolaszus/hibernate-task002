@@ -8,16 +8,13 @@ import java.util.Set;
 
 @Entity
 @Table(schema = "movie", name = "category")
-public class Category {
+public class Category extends AuditUpdateEntity<Byte> {
     @Id
     @Column(name = "category_id")
     private Byte id;
 
     private String name;
 
-    @Column(name = "last_update")
-    @UpdateTimestamp
-    private LocalDateTime lastUpdate;
 
     @ManyToMany
     @JoinTable(name = "film_category",
@@ -39,14 +36,6 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public LocalDateTime getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(LocalDateTime lastUpdate) {
-        this.lastUpdate = lastUpdate;
     }
 
     public Set<Film> getFilms() {

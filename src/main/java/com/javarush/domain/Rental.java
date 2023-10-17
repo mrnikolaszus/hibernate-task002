@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(schema = "movie", name = "rental")
-public class Rental {
+public class Rental extends AuditUpdateEntity<Integer> {
     @Id
     @Column(name = "rental_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,11 +30,6 @@ public class Rental {
     @ManyToOne
     @JoinColumn(name = "staff_id")
     private Staff staff;
-
-    @Column(name = "last_update")
-    @UpdateTimestamp
-    private LocalDateTime lastUpdate;
-
 
     public Integer getId() {
         return id;
@@ -84,11 +79,4 @@ public class Rental {
         this.staff = staff;
     }
 
-    public LocalDateTime getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(LocalDateTime lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
 }
